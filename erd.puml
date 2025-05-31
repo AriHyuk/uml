@@ -1,0 +1,69 @@
+@startuml
+!define table(x) class x << (T,#FFAAAA) >>
+!define primaryKey(x) <u>x</u>
+!define foreignKey(x) <i>x</i>
+
+' === Tables ===
+table(Client) {
+  primaryKey(id_client): INT
+  name: VARCHAR
+  email: VARCHAR
+  password: VARCHAR
+  phone: VARCHAR
+}
+
+table(Admin) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
+
+table(Appointment) {
+  primaryKey(id_appointment): INT
+  foreignKey(id_client): INT
+  appointment_date: DATETIME
+  status: VARCHAR
+  notes: TEXT
+}
+
+table(Testimoni) {
+  primaryKey(id_testimoni): INT
+  foreignKey(id_client): INT
+  content: TEXT
+  date_posted: DATE
+}
+
+table(Team) {
+  primaryKey(id_team): INT
+  name: VARCHAR
+  role: VARCHAR
+  photo: VARCHAR
+}
+
+table(Product) {
+  primaryKey(id_product): INT
+  name: VARCHAR
+  description: TEXT
+  price: DECIMAL
+  image: VARCHAR
+}
+
+table(Galery) {
+  primaryKey(id_photo): INT
+  title: VARCHAR
+  image_url: VARCHAR
+  date_uploaded: DATE
+}
+
+table(Award) {
+  primaryKey(id_award): INT
+  title: VARCHAR
+  year: YEAR
+  description: TEXT
+}
+
+' === Relationships ===
+Client ||--o{ Appointment
+Client ||--o{ Testimoni
+@enduml

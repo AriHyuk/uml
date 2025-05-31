@@ -1,0 +1,22 @@
+@startuml
+|Client|
+start
+:Datang ke kantor / hubungi admin;
+:Mengajukan permintaan appointment secara manual;
+|Admin|
+:Menerima permintaan appointment dari client;
+:Mencatat data permintaan ke catatan/manual;
+:Memberi informasi status (pending);
+|Client|
+:Menerima informasi status;
+|Admin|
+:Menentukan jadwal meeting;
+:Memberi kabar ke client jadwal meeting;
+|Client|
+:Menghadiri meeting / konfirmasi;
+|Admin|
+:Update status menjadi selesai;
+|Client|
+:Menerima informasi bahwa proses selesai;
+stop
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+|User|
+start
+:Masuk Website ;
+:Klik Menu Appointment;
+' if (Login sekarang?) then (Ya)
+'   :Dialihkan ke halaman Login;
+'   :Login;
+' else (Tidak)
+'   :Batal buat appointment;
+' endif
+
+|System|
+:Menampilkan halaman login;
+
+|User|
+:Login / Registrasi;
+
+|System|
+:Autentikasi User;
+
+|User|
+:Isi Form Usulan;
+:Klik Submit;
+
+|System|
+:Validasi Form;
+:Masuk ke Halaman Tracking;
+:Set Status = Pending;
+
+|User|
+:Menentukan Jadwal Meeting;
+
+|Admin|
+:Melihat Data Usulan Baru;
+:Update Status Menjadi
+"Disetujui / Dijadwalkan";
+
+|System|
+:Update Status Ke Sistem;
+
+|User|
+:Melihat Status Terkini;
+
+stop
+@enduml

@@ -1,0 +1,47 @@
+@startuml
+left to right direction
+skinparam actorStyle stick
+skinparam spacing 800
+
+actor "             Client                   " as C
+actor "             Admin                    " as A
+
+rectangle System {
+    usecase "Profile" as UC12
+    usecase "Principle" as UC2
+    usecase "Statistic" as UC3
+    usecase "Team" as UC4
+    usecase "Product" as UC5
+    usecase "Testimoni" as UC6
+    usecase "Client" as UC7
+    usecase "Award" as UC8
+    usecase "Galery" as UC9
+    usecase "About" as UC10
+    usecase "Hero Section" as UC1
+    usecase "Appointment" as UC11
+
+}
+
+' Client akses ke kiri
+C --> UC12
+C--->UC6
+C --> UC11
+
+
+' Admin akses ke kanan
+UC12 <-- A
+UC1 <-- A
+UC2 <-- A
+UC3 <-- A
+UC4 <-- A
+UC5 <--- A
+UC6 <--- A
+UC7 <--- A
+UC8 <-- A
+UC9 <-- A
+UC11 <-- A
+UC10 <-- A
+
+
+
+@enduml
