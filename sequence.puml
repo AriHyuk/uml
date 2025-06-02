@@ -1,0 +1,28 @@
+@startuml
+actor Client
+actor Admin
+
+participant "Web App" as Web
+participant "Auth System" as Auth
+participant "Appointment Module" as App
+participant "Tracking System" as Track
+
+== Client Flow ==
+Client -> Web : Klik Menu Appointment
+Web -> Client : Tampilkan Alert "Login dulu?"
+Client -> Auth : Login
+Auth --> Client : Berhasil login
+
+Client -> App : Isi dan Submit Form Appointment
+App -> Track : Generate Tracking Code
+Track --> App : Kode Tracking
+App --> Client : Tampilkan Kode Tracking (Status: Pending)
+
+== Admin Flow ==
+Admin -> App : Lihat Daftar Appointment
+App -> Admin : Tampilkan Detail
+Admin -> App : Update Status (Confirmed)
+App -> Track : Update Tracking Status
+Track --> Admin : Status Diperbarui
+
+@enduml

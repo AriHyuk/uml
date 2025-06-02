@@ -6,7 +6,7 @@ start
 |Admin|
 :Menerima permintaan appointment dari client;
 :Mencatat data permintaan ke catatan/manual;
-:Memberi informasi status (pending);
+:Memberi informasi status ;
 |Client|
 :Menerima informasi status;
 |Admin|

@@ -4,15 +4,45 @@
 !define foreignKey(x) <i>x</i>
 
 ' === Tables ===
-table(Client) {
+table(Hero_Sections) {
   primaryKey(id_client): INT
   name: VARCHAR
   email: VARCHAR
   password: VARCHAR
   phone: VARCHAR
 }
+table(Clients) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
+table(Profile) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
 
-table(Admin) {
+table(Principles) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
+table(Abouts) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
+table(Statistics) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
+table(key_Points) {
   primaryKey(id_admin): INT
   username: VARCHAR
   password: VARCHAR

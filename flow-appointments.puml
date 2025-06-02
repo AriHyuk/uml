@@ -1,0 +1,28 @@
+@startuml
+|User|
+start
+:Masuk ke website;
+:Klik menu "Appointment";
+note right
+Muncul alert:
+"Login dulu?"
+end note
+
+if (Lanjut login?) then (Ya)
+    :Arahkan ke halaman login;
+    :User login;
+    :Isi form appointment;
+    :Submit form;
+    :Halaman tracking (status: Pending);
+    |Admin|
+    :Login sebagai admin;
+    :Cek daftar appointment;
+    :Update status appointment;
+    |User|
+    :Lihat status update;
+    stop
+else (Tidak)
+    :Kembali ke halaman utama;
+    stop
+endif
+@enduml

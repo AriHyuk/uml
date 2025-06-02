@@ -3,15 +3,16 @@
 start
 :Masuk Website ;
 :Klik Menu Appointment;
-' if (Login sekarang?) then (Ya)
-'   :Dialihkan ke halaman Login;
-'   :Login;
-' else (Tidak)
-'   :Batal buat appointment;
-' endif
+if (             Alert
+(buat appointments?)) then (Ya)
+  :Dialihkan ke halaman Login;
+  :Login/register;
+else (Tidak)
+  stop;
+endif
 
 |System|
-:Menampilkan halaman login;
+:Menampilkan halaman login/register;
 
 |User|
 :Login / Registrasi;
@@ -34,7 +35,7 @@ start
 |Admin|
 :Melihat Data Usulan Baru;
 :Update Status Menjadi
-"Disetujui / Dijadwalkan";
+    "Disetujui/ditolak";
 
 |System|
 :Update Status Ke Sistem;
