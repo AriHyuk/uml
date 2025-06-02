@@ -4,96 +4,117 @@
 !define foreignKey(x) <i>x</i>
 
 ' === Tables ===
-table(Hero_Sections) {
-  primaryKey(id_client): INT
+table(hero_sections) {
+  primaryKey(hero_section_id): INT
+  achievement: VARCHAR
+  heading: VARCHAR
+  subheading: VARCHAR
+  path_video: VARCHAR
+  banner: VARCHAR
+}
+
+table(project_clients) {
+  primaryKey(project_client_id): INT
+  foreignKey(user_id): INT
+  name: VARCHAR
+  occupation: VARCHAR
+  avatar: VARCHAR
+  logo: VARCHAR
+}
+
+table(profile) {
+  primaryKey(id_admin): INT
+  username: VARCHAR
+  password: VARCHAR
+  name: VARCHAR
+}
+
+table(users) {
+  primaryKey(user_id): INT
+  email: VARCHAR
+  email_verified_at: TIME
+  password: VARCHAR
+}
+
+table(our_principles) {
+  primaryKey(principle_id): INT
+  name: VARCHAR
+  subtitle: VARCHAR
+  thumbnail: VARCHAR
+  icon: VARCHAR
+}
+
+table(company_abouts) {
+  primaryKey(company_about_id): INT
+  name: VARCHAR
+  thumbnail: VARCHAR
+  type: VARCHAR
+}
+
+table(company_statistics) {
+  primaryKey(id): INT
+  name: VARCHAR
+  goal: VARCHAR
+  icon: VARCHAR
+}
+
+table(company_key_points) {
+  primaryKey(company_key_points_id): INT
+  foreignKey(company_about_id): INT
+}
+
+table(appointments) {
+  primaryKey(appointment_id): INT
+  foreignKey(user_id): INT
+  foreignKey(product_id): INT
   name: VARCHAR
   email: VARCHAR
-  password: VARCHAR
+  status: VARCHAR
+  brief: VARCHAR
   phone: VARCHAR
 }
-table(Clients) {
-  primaryKey(id_admin): INT
-  username: VARCHAR
-  password: VARCHAR
-  name: VARCHAR
-}
-table(Profile) {
-  primaryKey(id_admin): INT
-  username: VARCHAR
-  password: VARCHAR
-  name: VARCHAR
-}
 
-table(Principles) {
-  primaryKey(id_admin): INT
-  username: VARCHAR
-  password: VARCHAR
-  name: VARCHAR
-}
-table(Abouts) {
-  primaryKey(id_admin): INT
-  username: VARCHAR
-  password: VARCHAR
-  name: VARCHAR
-}
-table(Statistics) {
-  primaryKey(id_admin): INT
-  username: VARCHAR
-  password: VARCHAR
-  name: VARCHAR
-}
-table(key_Points) {
-  primaryKey(id_admin): INT
-  username: VARCHAR
-  password: VARCHAR
-  name: VARCHAR
-}
-
-table(Appointment) {
-  primaryKey(id_appointment): INT
+table(testimonials) {
+  primaryKey(testimoni_id): INT
   foreignKey(id_client): INT
-  appointment_date: DATETIME
-  status: VARCHAR
-  notes: TEXT
+  thumbnail: VARCHAR
+  message: VARCHAR
 }
 
-table(Testimoni) {
-  primaryKey(id_testimoni): INT
-  foreignKey(id_client): INT
-  content: TEXT
-  date_posted: DATE
+table(our_teams) {
+  primaryKey(team_id): INT
+  occupation: VARCHAR
+  avatar: VARCHAR
+  location: VARCHAR
 }
 
-table(Team) {
-  primaryKey(id_team): INT
+table(products) {
+  primaryKey(product_id): INT
   name: VARCHAR
-  role: VARCHAR
-  photo: VARCHAR
+  tagline: VARCHAR
+  thumbnail: VARCHAR
+  about: VARCHAR
 }
 
-table(Product) {
-  primaryKey(id_product): INT
-  name: VARCHAR
-  description: TEXT
-  price: DECIMAL
-  image: VARCHAR
-}
-
-table(Galery) {
-  primaryKey(id_photo): INT
+table(galleries) {
+  primaryKey(galery_id): INT
   title: VARCHAR
-  image_url: VARCHAR
-  date_uploaded: DATE
+  image: VARCHAR
+  description: VARCHAR
 }
 
-table(Award) {
-  primaryKey(id_award): INT
+table(awards) {
+  primaryKey(award_id): INT
   title: VARCHAR
   year: YEAR
-  description: TEXT
+  icon: VARCHAR
+  location: VARCHAR
 }
 
 ' === Relationships ===
-Client ||--o{ Appointment
-Client ||--o{ Testimoni
+users ||--o{ appointments
+users ||--o{ project_clients
+project_clients ||--o{ testimonials
+products ||--o{ appointments
+company_abouts ||--o{ company_key_points
 @enduml
