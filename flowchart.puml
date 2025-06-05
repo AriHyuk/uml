@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+skinparam defaultTextAlignment center
+skinparam linetype ortho
+
+start
+:User buka halaman Appointment;
+
+if ("Login valid?") then (Yes)
+  :Isi form appointment;
+  :Klik Submit;
+
+  if ("Form valid?") then (Yes)
+    :Generate Tracking Code;
+    database "Appointments DB" as DB
+    :Status = Pending;
+    --> DB : Simpan data;
+    if ("Admin konfirmasi?") then (Ya)
+      :Status = Confirmed;
+    else
+      :Status tetap Pending;
+    endif
+    :Tampilkan status ke user;
+  else
+    :Tampilkan error validasi;
+  endif
+else
+  :Tampilkan error login;
+endif
+
+stop
+@enduml
